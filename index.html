@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bright Heart</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f3f6ff; --surface:#ffffff; --ink:#0b1f4d; --muted:#4a5b85; --navy:#0b1f4d;
+  --heart:#ff4d79; --sun:#ffc24b; --mint:#b9ead8; --lilac:#dbe4ff; --line:#d5def5;
+  --display:'Bricolage Grotesque','Trebuchet MS',sans-serif; --body:'DM Sans','Segoe UI','Noto Sans',system-ui,sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#071233; --surface:#0f1e4a; --ink:#eef2ff; --muted:#aab9e3; --line:#1f3270; --lilac:#243a80; --mint:#1f5a49; --navy:#0d2766;
+}}
+:root[data-theme="dark"]{--bg:#071233; --surface:#0f1e4a; --ink:#eef2ff; --muted:#aab9e3; --line:#1f3270; --lilac:#243a80; --mint:#1f5a49; --navy:#0d2766;}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.65}
+h1,h2,h3{font-family:var(--display);line-height:1.1;margin:0 0 .5em;letter-spacing:-.02em}
+h1{font-size:clamp(2.8rem,8vw,5.6rem);font-weight:800}
+h2{font-size:clamp(1.8rem,4vw,2.7rem);font-weight:700}
+h3{font-size:1.3rem;font-weight:700;letter-spacing:-.01em}
+p{margin:0 0 1em;max-width:62ch}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.25rem}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--navy)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:.8rem;padding:.7rem 0;flex-wrap:wrap}
+.logo{font-family:var(--display);font-weight:800;font-size:1.4rem;color:#fff;text-decoration:none;display:flex;align-items:center;gap:.45rem}
+.logo svg{width:30px;height:30px}
+.right{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap}
+nav{display:flex;gap:.3rem;flex-wrap:wrap}
+nav a{text-decoration:none;padding:.45rem .9rem;border-radius:99px;font-weight:500;font-size:.95rem;color:#c9d5f7;transition:background .2s,color .2s}
+nav a:hover{background:rgba(255,255,255,.14);color:#fff}
+nav a[aria-current="page"]{background:#fff;color:#0b1f4d}
+#lang{font:inherit;font-weight:700;font-size:.9rem;cursor:pointer;background:var(--sun);color:#0b1f4d;border:0;border-radius:99px;padding:.45rem 1rem}
+
+.hero{position:relative;overflow:hidden;padding:3.5rem 0 4rem;background:var(--navy);color:#fff}
+.hero .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:2rem;align-items:center}
+.hero p.lead{font-size:1.25rem;color:#c9d5f7}
+.herosvg{width:100%;max-width:480px;margin:auto;display:block}
+.sunspin{transform-origin:360px 110px;animation:spin 40s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.sunspin{animation:none}}
+.btn{display:inline-block;background:var(--sun);color:#0b1f4d;font-weight:700;padding:.85rem 1.5rem;border-radius:99px;text-decoration:none;margin-top:.5rem;transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+
+section.block{padding:3.5rem 0}
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1rem;margin-top:1.5rem}
+.why div{padding:1.4rem;border-radius:28px 28px 28px 6px}
+.why div:nth-child(1){background:var(--sun);color:#0b1f4d}
+.why div:nth-child(2){background:var(--mint);color:var(--ink)}
+.why div:nth-child(3){background:var(--lilac);border-radius:28px 28px 6px 28px}
+.why div:nth-child(4){background:var(--navy);color:#fff;border-radius:6px 28px 28px 28px}
+.why p{margin:0}
+.paths{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.2rem;margin-top:1.5rem}
+.path{display:block;text-decoration:none;background:var(--surface);border:2px solid var(--line);border-radius:24px;padding:1.6rem;transition:border-color .2s,transform .2s}
+.path:hover{border-color:var(--navy);transform:translateY(-3px)}
+.path .tag{display:inline-block;font-size:.9rem;font-weight:700;color:var(--heart);margin-top:.4rem}
+
+.pagehead{padding:3rem 0 .5rem}
+.pagehead h1{font-size:clamp(2.2rem,6vw,3.8rem)}
+.pagehead p{font-size:1.2rem;color:var(--muted)}
+.scene{width:100%;height:auto;display:block;margin:1rem 0 .5rem}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin:1.5rem 0}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:1.5rem}
+.card p{margin:0;color:var(--muted)}
+.dot{width:44px;height:44px;border-radius:50% 50% 50% 8px;margin-bottom:.8rem;display:grid;place-items:center;font-size:1.4rem}
+.steps{list-style:none;counter-reset:s;padding:0;margin:1.5rem 0;display:grid;gap:.8rem}
+.steps li{counter-increment:s;display:flex;gap:1rem;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:1rem 1.2rem}
+.steps li::before{content:counter(s);flex:none;width:2rem;height:2rem;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;display:grid;place-items:center}
+.note{background:var(--navy);color:#fff;border-radius:24px;padding:1.5rem;margin:2rem 0}
+.note p{margin:0}
+.view{display:none}.view.on{display:block}
+footer{background:var(--navy);padding:2.2rem 0 3rem;color:#c9d5f7;font-size:.98rem}
+footer p{margin:0 0 .8rem}
+.contact{display:flex;gap:.5rem 2rem;flex-wrap:wrap;font-weight:500}
+.contact a{color:#fff;font-weight:700}
+@media (max-width:760px){.hero .wrap{grid-template-columns:1fr}.herosvg{max-width:320px;order:-1}.hero{padding-top:2rem}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#home" data-go="home" aria-label="Bright Heart home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="7" fill="#ffc24b"/><g stroke="#ffc24b" stroke-width="2.5" stroke-linecap="round"><path d="M16 2v4M16 26v4M2 16h4M26 16h4M6 6l3 3M23 23l3 3M26 6l-3 3M6 26l3-3"/></g></svg>
+      Bright Heart
+    </a>
+    <div class="right">
+      <nav aria-label="Menu">
+        <a href="#home" data-go="home" data-i="n_home">Home</a>
+        <a href="#organised" data-go="organised" data-i="n_org">Organised volunteering</a>
+        <a href="#local" data-go="local" data-i="n_loc">Local volunteering</a>
+        <a href="#international" data-go="international" data-i="n_int">International ideas</a>
+      </nav>
+      <button id="lang" type="button" aria-label="Change language">МН</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- HOME -->
+<div class="view" id="home">
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <h1 data-i="h_title">Small time.<br>Big heart.</h1>
+        <p class="lead" data-i="h_lead">Volunteering means giving your time to help others, without being paid. You don’t need special skills or lots of free hours to begin. You only need to start.</p>
+        <a class="btn" href="#local" data-go="local" data-i="h_btn">Find something near you</a>
+      </div>
+      <svg class="herosvg" data-scene="hero" viewBox="0 0 480 400" role="img" aria-label="Three volunteers planting a tree under a bright sun"></svg>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2 data-i="w_h">Why give your time?</h2>
+      <p data-i="w_p">Helping others changes things for them, and it changes things for you too.</p>
+      <div class="why">
+        <div><h3 data-i="w1h">Learn new skills</h3><p data-i="w1p">Teamwork, planning and communication all grow when you help out.</p></div>
+        <div><h3 data-i="w2h">Meet people</h3><p data-i="w2p">You’ll make friends with people of different ages and backgrounds.</p></div>
+        <div><h3 data-i="w3h">Feel proud</h3><p data-i="w3p">Seeing the difference you make is a great feeling.</p></div>
+        <div><h3 data-i="w4h">Help your community</h3><p data-i="w4p">Small actions add up to a kinder, stronger place to live.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <div class="wrap">
+      <h2 data-i="c_h">Choose your path</h2>
+      <div class="paths">
+        <a class="path" href="#organised" data-go="organised"><h3 data-i="n_org">Organised volunteering</h3><p data-i="c1">Join a charity or youth group with a clear plan and training.</p><span class="tag" data-i="c_tag">Explore this page</span></a>
+        <a class="path" href="#local" data-go="local"><h3 data-i="n_loc">Local volunteering</h3><p data-i="c2">Help in your school, street or town, starting this week.</p><span class="tag" data-i="c_tag">Explore this page</span></a>
+        <a class="path" href="#international" data-go="international"><h3 data-i="n_int">International ideas</h3><p data-i="c3">Make a difference in the wider world, from home or abroad.</p><span class="tag" data-i="c_tag">Explore this page</span></a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ORGANISED -->
+<div class="view" id="organised">
+  <div class="wrap">
+    <div class="pagehead"><h1 data-i="n_org">Organised volunteering</h1>
+    <p data-i="o_p">Charities and youth organisations give you training, a team and a clear role. This is a good choice if you want to commit for a longer time.</p></div>
+    <svg class="scene" data-scene="org" viewBox="0 0 800 260" role="img" aria-label="Volunteers in yellow and pink vests with a first aid box"></svg>
+    <div class="cols">
+      <div class="card"><div class="dot" style="background:var(--sun)">🚑</div><h3 data-i="o1h">Humanitarian charities</h3><p data-i="o1p">Groups such as the Red Cross and Red Crescent train volunteers in first aid and help people in emergencies.</p></div>
+      <div class="card"><div class="dot" style="background:var(--mint)">🏕️</div><h3 data-i="o2h">Youth organisations</h3><p data-i="o2p">Scouts, Guides and similar clubs build confidence and leadership, and often run community projects.</p></div>
+      <div class="card"><div class="dot" style="background:var(--lilac)">🐾</div><h3 data-i="o3h">Animal and nature groups</h3><p data-i="o3p">Shelters and conservation charities need help with care, cleaning and planting.</p></div>
+    </div>
+    <h2 data-i="o_h2">How to join</h2>
+    <ol class="steps">
+      <li><span data-i="os1">Choose a cause you care about, such as animals, health, education or the environment.</span></li>
+      <li><span data-i="os2">Research organisations online and check that they are trusted and registered.</span></li>
+      <li><span data-i="os3">Contact them and ask about age limits, training and how many hours they need.</span></li>
+      <li><span data-i="os4">Start small, then take on more once you feel confident.</span></li>
+    </ol>
+    <div class="note"><p data-i="o_note"><strong>Tip:</strong> Ask a parent, teacher or guardian to help you with your first message. Many organisations need their permission for under-18s.</p></div>
+  </div>
+</div>
+
+<!-- LOCAL -->
+<div class="view" id="local">
+  <div class="wrap">
+    <div class="pagehead"><h1 data-i="n_loc">Local volunteering</h1>
+    <p data-i="l_p">You don’t have to go far to help. Many chances are in your school, your street and your town.</p></div>
+    <svg class="scene" data-scene="loc" viewBox="0 0 800 260" role="img" aria-label="Volunteers collecting litter and planting trees in their neighbourhood"></svg>
+    <div class="cols">
+      <div class="card"><div class="dot" style="background:var(--mint)">🌳</div><h3 data-i="l1h">Clean up your area</h3><p data-i="l1p">Organise a litter pick or plant a community garden with friends.</p></div>
+      <div class="card"><div class="dot" style="background:var(--sun)">📚</div><h3 data-i="l2h">Tutor younger students</h3><p data-i="l2p">Share what you know. Reading with a younger child can change their year.</p></div>
+      <div class="card"><div class="dot" style="background:var(--lilac)">🧓</div><h3 data-i="l3h">Support older neighbours</h3><p data-i="l3p">Carry shopping, share a chat or help someone learn to use their phone.</p></div>
+      <div class="card"><div class="dot" style="background:var(--sun)">🥫</div><h3 data-i="l4h">Help a food bank</h3><p data-i="l4p">Collect, sort and hand out food for families who need it.</p></div>
+      <div class="card"><div class="dot" style="background:var(--mint)">🎪</div><h3 data-i="l5h">Run a school event</h3><p data-i="l5p">Bake sales, sponsored walks and talent shows raise money for local charities.</p></div>
+      <div class="card"><div class="dot" style="background:var(--lilac)">🤝</div><h3 data-i="l6h">Welcome new students</h3><p data-i="l6p">Show new classmates around. It costs nothing and means a lot.</p></div>
+    </div>
+    <div class="note"><p data-i="l_note"><strong>Try this week:</strong> Pick one idea, ask one friend to join you and set a date. Small and regular is better than big and never.</p></div>
+  </div>
+</div>
+
+<!-- INTERNATIONAL -->
+<div class="view" id="international">
+  <div class="wrap">
+    <div class="pagehead"><h1 data-i="n_int">International ideas</h1>
+    <p data-i="i_p">Problems like hunger, climate change and lack of education affect people all over the world. There are many ways to help, even when you’re far away.</p></div>
+    <svg class="scene" data-scene="intl" viewBox="0 0 800 260" role="img" aria-label="Volunteers on laptops connected to a globe"></svg>
+    <div class="cols">
+      <div class="card"><div class="dot" style="background:var(--lilac)">💻</div><h3 data-i="i1h">Volunteer online</h3><p data-i="i1p">Translate texts, design posters or tutor students in other countries from your own computer.</p></div>
+      <div class="card"><div class="dot" style="background:var(--sun)">💸</div><h3 data-i="i2h">Raise money</h3><p data-i="i2p">Organise a fundraiser for an international charity that provides clean water, food or schooling.</p></div>
+      <div class="card"><div class="dot" style="background:var(--mint)">🌍</div><h3 data-i="i3h">Volunteer abroad</h3><p data-i="i3p">When you are older, you can join projects overseas, such as teaching, building or conservation.</p></div>
+      <div class="card"><div class="dot" style="background:var(--heart)">📣</div><h3 data-i="i4h">Spread awareness</h3><p data-i="i4p">Write, post and talk about global issues so more people understand and act.</p></div>
+    </div>
+    <h2 data-i="i_h2">Choose with care</h2>
+    <p data-i="i_p2">Not every overseas project helps local people. Before you join or donate, check these things:</p>
+    <ol class="steps">
+      <li><span data-i="is1">Is the organisation registered, and does it share where its money goes?</span></li>
+      <li><span data-i="is2">Do local people lead the project and decide what they need?</span></li>
+      <li><span data-i="is3">Will the work still help after you leave?</span></li>
+    </ol>
+    <div class="note"><p data-i="i_note"><strong>Think globally, act locally:</strong> The best international idea might start with a poster in your school corridor.</p></div>
+  </div>
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p data-i="f_note">Bright Heart is a student project about volunteering. Every hour you give matters.</p>
+    <div class="contact">
+      <span><span data-i="f_phone">Phone</span>: <a href="tel:91842012">91842012</a></span>
+      <span><span data-i="f_mail">Email</span>: <a href="mailto:enerelenerel533@gmail.com">enerelenerel533@gmail.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  /* ---------- Mongolian text ---------- */
+  var MN={
+    n_home:'Нүүр',n_org:'Зохион байгуулалттай сайн дурын ажил',n_loc:'Орон нутгийн сайн дурын ажил',n_int:'Олон улсын санаанууд',
+    h_title:'Бага цаг.<br>Том сэтгэл.',
+    h_lead:'Сайн дурын ажил гэдэг нь цалингүйгээр бусдад туслахын тулд цагаа зориулах явдал юм. Эхлэхэд танд тусгай ур чадвар ч, их чөлөөт цаг ч хэрэггүй. Зүгээр л эхэлхэд хангалттай.',
+    h_btn:'Ойролцоох ажлаа ол',
+    w_h:'Яагаад цагаа зориулах вэ?',w_p:'Бусдад тусалснаар тэдний амьдрал өөрчлөгдөхөөс гадна таны амьдрал ч өөрчлөгдөнө.',
+    w1h:'Шинэ ур чадвар суралц',w1p:'Багаар ажиллах, төлөвлөх, харилцах чадвар тань туслах тусам хөгжинө.',
+    w2h:'Шинэ хүмүүстэй танилц',w2p:'Өөр өөр насны, өөр өөр орчны хүмүүстэй найзална.',
+    w3h:'Бахархал мэдэр',w3p:'Өөрийн хийсэн ажлын үр дүнг харах нь маш сайхан мэдрэмж.',
+    w4h:'Нийгэмдээ тусал',w4p:'Жижиг үйлс нийлээд илүү сайхан, илүү хүчтэй орчныг бүтээдэг.',
+    c_h:'Замаа сонго',c_tag:'Энэ хуудсыг үзэх',
+    c1:'Тодорхой төлөвлөгөө, сургалттай буяны байгууллага эсвэл залуучуудын бүлэгт нэгд.',
+    c2:'Сургууль, гудамж, хотдоо энэ долоо хоногоос эхлэн тусал.',
+    c3:'Гэрээсээ ч, гадаадад ч дэлхийн хэмжээнд өөрчлөлт авчир.',
+    o_p:'Буяны болон залуучуудын байгууллагууд танд сургалт, баг, тодорхой үүрэг өгдөг. Урт хугацаанд тогтвортой оролцохыг хүсвэл сайн сонголт.',
+    o1h:'Хүмүүнлэгийн буяны байгууллага',o1p:'Улаан загалмай, Улаан хавирган сар зэрэг байгууллага сайн дурынханд анхны тусламж заан, ослын үед хүмүүст тусалдаг.',
+    o2h:'Залуучуудын байгууллага',o2p:'Скаут болон ижил төстэй клубүүд өөртөө итгэх итгэл, манлайллыг хөгжүүлж, олон нийтийн төсөл хэрэгжүүлдэг.',
+    o3h:'Амьтан, байгалийн бүлэг',o3p:'Хоргодох байр болон байгаль хамгаалах байгууллагад арчилгаа, цэвэрлэгээ, мод тарихад тусламж хэрэгтэй.',
+    o_h2:'Яаж нэгдэх вэ',
+    os1:'Амьтан, эрүүл мэнд, боловсрол, байгаль орчин гэх мэт өөрт чухал санагдах чиглэлээ сонго.',
+    os2:'Байгууллагуудыг интернетээс судалж, найдвартай, бүртгэлтэй эсэхийг шалга.',
+    os3:'Тэдэнтэй холбогдож, насны хязгаар, сургалт, хэдэн цаг шаардлагатайг асуу.',
+    os4:'Жижгээс эхэлж, өөртөө итгэлтэй болмогц илүү их ажил хий.',
+    o_note:'<strong>Зөвлөгөө:</strong> Анхны захидлаа бичихэд эцэг эх, багш эсвэл асран хамгаалагчаасаа тусламж ав. Олон байгууллага 18 нас хүрээгүй хүнд тэдний зөвшөөрөл шаарддаг.',
+    l_p:'Тусалхын тулд хол явах шаардлагагүй. Боломж олон нь сургууль, гудамж, хотод чинь байдаг.',
+    l1h:'Орчноо цэвэрлэ',l1p:'Найзуудтайгаа хог түүх арга хэмжээ зохион байгуул эсвэл олон нийтийн цэцэрлэг тарь.',
+    l2h:'Бага ангийн сурагчдад заа',l2p:'Мэдсэнээ хуваалц. Бага насны хүүхэдтэй хамт ном унших нь түүний жилийг өөрчилж чадна.',
+    l3h:'Ахмад хөршдөө тусал',l3p:'Дэлгүүрийн ачаа зөө, ярилц, эсвэл утас ашиглахад нь заж өг.',
+    l4h:'Хүнсний банкинд тусал',l4p:'Хүнс цуглуулж, ангилж, хэрэгтэй гэр бүлүүдэд тарааж өг.',
+    l5h:'Сургуульдаа арга хэмжээ зохион байгуул',l5p:'Боов худалдаа, буяны алхалт, авьяасын шоу орон нутгийн буяны ажилд хөрөнгө босгодог.',
+    l6h:'Шинэ сурагчдыг угтаж ав',l6p:'Шинэ ангийнхандаа сургуулиа танилцуул. Зардалгүй ч маш утга учиртай.',
+    l_note:'<strong>Энэ долоо хоногт туршаад үз:</strong> Нэг санаа сонгож, нэг найзаа урьж, өдрөө товло. Жижиг боловч тогтмол байх нь том боловч хэзээ ч хийхгүй байхаас дээр.',
+    i_p:'Өлсгөлөн, уур амьсгалын өөрчлөлт, боловсролын хомсдол зэрэг асуудал дэлхий даяар хүмүүст нөлөөлдөг. Хол байсан ч тусалж болох олон арга бий.',
+    i1h:'Онлайнаар сайн дурын ажил хий',i1p:'Өөрийн компьютерээс бичвэр орчуул, зурагт хуудас зохио, эсвэл бусад орны сурагчдад заа.',
+    i2h:'Хөрөнгө босго',i2p:'Цэвэр ус, хоол хүнс, боловсрол хүргэдэг олон улсын буяны байгууллагад зориулж хөрөнгө босгох арга хэмжээ зохион байгуул.',
+    i3h:'Гадаадад сайн дурын ажил хий',i3p:'Томорсныхоо дараа гадаадын сургалт, барилга, байгаль хамгаалах зэрэг төсөлд оролцож болно.',
+    i4h:'Мэдлэг түгээ',i4p:'Дэлхийн асуудлын тухай бичиж, нийтэлж, ярьж олон хүн ойлгож, үйлдэл хийхэд нь тусал.',
+    i_h2:'Болгоомжтой сонго',i_p2:'Гадаадын төсөл бүр нутгийн иргэдэд тус болдоггүй. Нэгдэх эсвэл хандив өгөхийн өмнө дараахыг шалга:',
+    is1:'Байгууллага бүртгэлтэй юу, мөнгөө хаана зарцуулдгаа ил тод мэдээлдэг үү?',
+    is2:'Нутгийн иргэд төслийг удирдаж, өөрсдийн хэрэгцээг өөрсдөө шийддэг үү?',
+    is3:'Чамайг явсны дараа ч энэ ажил тус болсоор байх уу?',
+    i_note:'<strong>Дэлхийгээрээ бод, орон нутагтаа үйлд:</strong> Хамгийн сайн олон улсын санаа сургуулийнхаа коридорт өлгөсөн нэг зурагт хуудаснаас эхэлж магадгүй.',
+    f_note:'Bright Heart бол сайн дурын ажлын тухай сурагчийн төсөл. Таны зориулсан цаг бүр чухал.',
+    f_phone:'Утас',f_mail:'Имэйл'
+  };
+  var els=document.querySelectorAll('[data-i]');
+  els.forEach(function(e){e.dataset.en=e.innerHTML});
+  var btn=document.getElementById('lang'),mn=false;
+  function setLang(m){
+    mn=m;
+    els.forEach(function(e){e.innerHTML=m&&MN[e.dataset.i]?MN[e.dataset.i]:e.dataset.en});
+    document.documentElement.lang=m?'mn':'en';
+    btn.textContent=m?'EN':'МН';
+    btn.setAttribute('aria-label',m?'Switch to English':'Монгол хэл рүү шилжих');
+    try{localStorage.setItem('bh-lang',m?'mn':'en')}catch(x){}
+  }
+  btn.addEventListener('click',function(){setLang(!mn)});
+
+  /* ---------- Illustrations ---------- */
+  function f(v){return +v.toFixed(1)}
+  function P(x,y,s,shirt,skin,hair,pose){
+    var ends;
+    if(pose==='up')ends=[[x-19*s,y-46*s],[x+27*s,y-104*s]];
+    else if(pose==='R')ends=[[x+30*s,y-58*s],[x+28*s,y-46*s]];
+    else if(pose==='L')ends=[[x-30*s,y-58*s],[x-28*s,y-46*s]];
+    else ends=[[x-19*s,y-46*s],[x+19*s,y-46*s]];
+    var sh=[[x-12*s,y-70*s],[x+12*s,y-70*s]],o='';
+    o+='<rect x="'+f(x-11*s)+'" y="'+f(y-38*s)+'" width="'+f(9*s)+'" height="'+f(38*s)+'" rx="'+f(3*s)+'" fill="#13265e"/>';
+    o+='<rect x="'+f(x+2*s)+'" y="'+f(y-38*s)+'" width="'+f(9*s)+'" height="'+f(38*s)+'" rx="'+f(3*s)+'" fill="#13265e"/>';
+    o+='<rect x="'+f(x-14*s)+'" y="'+f(y-78*s)+'" width="'+f(28*s)+'" height="'+f(44*s)+'" rx="'+f(10*s)+'" fill="'+shirt+'"/>';
+    for(var i=0;i<2;i++){
+      o+='<line x1="'+f(sh[i][0])+'" y1="'+f(sh[i][1])+'" x2="'+f(ends[i][0])+'" y2="'+f(ends[i][1])+'" stroke="'+shirt+'" stroke-width="'+f(8*s)+'" stroke-linecap="round"/>';
+      o+='<circle cx="'+f(ends[i][0])+'" cy="'+f(ends[i][1])+'" r="'+f(4.6*s)+'" fill="'+skin+'"/>';
+    }
+    o+='<circle cx="'+f(x)+'" cy="'+f(y-92*s)+'" r="'+f(12*s)+'" fill="'+skin+'"/>';
+    o+='<path d="M'+f(x-12.6*s)+' '+f(y-92*s)+'A'+f(12.6*s)+' '+f(12.6*s)+' 0 0 1 '+f(x+12.6*s)+' '+f(y-92*s)+'Z" fill="'+hair+'"/>';
+    return o;
+  }
+  var K=['#f2c9a0','#c68a5b','#8d5a3b'],H=['#2a1a14','#111','#5a3320'];
+  function tree(x,y,r){return '<rect x="'+(x-4)+'" y="'+(y-r)+'" width="8" height="'+(r+4)+'" fill="#8a5a3c"/><circle cx="'+x+'" cy="'+(y-r-8)+'" r="'+r+'" fill="#3fae7d"/><circle cx="'+(x-r*.6)+'" cy="'+(y-r*.5)+'" r="'+(r*.65)+'" fill="#35996c"/><circle cx="'+(x+r*.6)+'" cy="'+(y-r*.5)+'" r="'+(r*.65)+'" fill="#35996c"/>'}
+  var ground='<rect x="0" y="232" width="800" height="28" style="fill:var(--navy)" opacity=".14"/>';
+  var S={
+    hero:function(){
+      var rays='';for(var i=0;i<12;i++){var a=i*Math.PI/6;rays+='<line x1="'+f(360+76*Math.cos(a))+'" y1="'+f(110+76*Math.sin(a))+'" x2="'+f(360+98*Math.cos(a))+'" y2="'+f(110+98*Math.sin(a))+'" stroke="#ffc24b" stroke-width="6" stroke-linecap="round"/>'}
+      return '<g class="sunspin">'+rays+'</g><circle cx="360" cy="110" r="64" fill="#ffc24b"/>'+
+        '<ellipse cx="240" cy="395" rx="290" ry="105" fill="#b9ead8"/>'+
+        '<ellipse cx="240" cy="336" rx="38" ry="8" fill="#7a4f35"/>'+tree(240,334,26).replace(/<rect[^>]*\/>/,'<rect x="236" y="290" width="8" height="46" fill="#8a5a3c"/>')+
+        P(150,350,1.25,'#ff4d79',K[0],H[0],'R')+P(330,350,1.25,'#ffc24b',K[1],H[1],'L')+P(430,362,.95,'#e4d7ff',K[2],H[2],'up');
+    },
+    org:function(){
+      return '<rect width="800" height="260" rx="28" style="fill:var(--lilac)"/>'+ground+
+        '<g stroke="#0b1f4d" stroke-width="3" stroke-linejoin="round"><rect x="372" y="192" width="56" height="42" rx="6" fill="#fff"/></g><path d="M400 200v26M387 213h26" stroke="#ff4d79" stroke-width="7" stroke-linecap="round"/>'+
+        P(190,236,1.35,'#ffc24b',K[1],H[1],'up')+P(300,236,1.35,'#ff4d79',K[0],H[0],'R')+P(500,236,1.35,'#ffc24b',K[2],H[2],'L')+P(610,236,1.35,'#ff4d79',K[0],H[2],'up');
+    },
+    loc:function(){
+      return '<rect width="800" height="260" rx="28" style="fill:var(--mint)"/>'+ground+tree(80,236,34)+tree(730,236,40)+
+        '<path d="M372 236c-14-4-16-38-8-52l36-8 36 8c8 14 6 48-8 52z" fill="#13265e"/><path d="M386 178l14-14 14 14" stroke="#13265e" stroke-width="6" fill="none" stroke-linecap="round"/>'+
+        '<g fill="#ff4d79"><circle cx="170" cy="240" r="6"/><circle cx="188" cy="244" r="6" fill="#ffc24b"/><circle cx="640" cy="242" r="6" fill="#ffc24b"/><circle cx="658" cy="238" r="6"/></g>'+
+        P(300,236,1.35,'#ff4d79',K[0],H[0],'R')+P(500,236,1.35,'#ffc24b',K[1],H[1],'L')+P(215,236,1.1,'#fff',K[2],H[2],'up')+P(585,236,1.1,'#e4d7ff',K[0],H[2],'up');
+    },
+    intl:function(){
+      return '<rect width="800" height="260" rx="28" style="fill:var(--lilac)"/>'+ground+
+        '<circle cx="400" cy="120" r="78" fill="#3b5cc4"/><path d="M350 90c14-14 34-10 40 4s-10 22-4 38-26 10-34-6-12-24-2-36zM420 70c18-4 38 10 34 28s-22 14-30 30-12 28-22 22-6-28 4-40 2-34 14-40z" fill="#3fae7d"/><ellipse cx="400" cy="120" rx="30" ry="78" fill="none" stroke="#fff" stroke-width="2" opacity=".6"/><path d="M322 120h156" stroke="#fff" stroke-width="2" opacity=".6"/>'+
+        '<path d="M210 140Q290 40 322 108M590 140Q510 40 478 108" fill="none" stroke="#ff4d79" stroke-width="4" stroke-dasharray="3 9" stroke-linecap="round"/>'+
+        P(190,236,1.35,'#ffc24b',K[0],H[0],'R')+'<g><rect x="222" y="186" width="44" height="28" rx="4" fill="#0b1f4d"/><rect x="216" y="214" width="56" height="5" rx="2" fill="#6b7fb3"/></g>'+
+        P(610,236,1.35,'#ff4d79',K[2],H[1],'L')+'<g><rect x="534" y="186" width="44" height="28" rx="4" fill="#0b1f4d"/><rect x="528" y="214" width="56" height="5" rx="2" fill="#6b7fb3"/></g>';
+    }
+  };
+  document.querySelectorAll('[data-scene]').forEach(function(el){
+    var h=S[el.dataset.scene]();
+    el.innerHTML=el.dataset.scene==='hero'?h:h;
+  });
+
+  /* ---------- Pages ---------- */
+  var ids=['home','organised','local','international'];
+  function show(){
+    var h=(location.hash||'#home').slice(1);
+    if(ids.indexOf(h)<0)h='home';
+    ids.forEach(function(i){document.getElementById(i).classList.toggle('on',i===h)});
+    document.querySelectorAll('nav a').forEach(function(a){
+      if(a.dataset.go===h)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');
+    });
+    window.scrollTo(0,0);
+  }
+  document.querySelectorAll('[data-go]').forEach(function(a){
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      try{history.replaceState(null,'','#'+a.dataset.go)}catch(x){}
+      location.hash=a.dataset.go;
+      show();
+    });
+  });
+  window.addEventListener('hashchange',show);
+  show();
+  try{if(localStorage.getItem('bh-lang')==='mn')setLang(true)}catch(x){}
+})();
+</script>
+</body>
+</html>
